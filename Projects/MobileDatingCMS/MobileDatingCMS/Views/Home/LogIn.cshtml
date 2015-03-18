@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Đăng nhập";
+}
+
+<h2>Đăng nhập</h2>
+
+<form id="form-login" method="post" action="@Url.Action("LogIn")" class="form-horizontal">
+    @Html.AntiForgeryToken()
+
+    @Html.Hidden("returnUrl", (object) this.ViewBag.ReturnUrl)
+
+    @Html.FormControl("Username", name: "username", required: true)
+    @Html.FormControl("Password", name: "password", type: "password", required: true)
+
+    <div class="form-group text-center">
+        <button id="btn-login" type="button" class="btn btn-primary" onclick="onLogInButtonClick();">Đăng nhập</button>
+    </div>
+
+    <script>
+        function onLogInButtonClick() {
+            $("#btn-login").hide();
+
+            var frm = $("#form-login");
+
+            console.log(frm.validate({
+                rules: {
+                    username: "required",
+                    password: "required",
+                }
+            }));
+
+            var data = frm.serialize();
+
+            $.ajax({
+                url: frm.attr("action"),
+                type: "POST",
+                data: data,
+                dataType: "JSON",
+
+                success: function (data) {
+                    if (data.Succeeded) {
+                        window.location.href = data.ReturnUrl;
+                    } else {
+                        alert(data.Error);
+                        $("#btn-login").show();
+                    }
+                },
+
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                    $("#btn-login").show();
+                },
+
+            });
+
+        }
+    </script>
+
+</form>

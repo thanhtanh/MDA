@@ -1,0 +1,127 @@
+﻿@{ 
+    bool loggedIn = this.User.Identity.IsAuthenticated;
+    string username = this.User.Identity.Name;
+
+    if (!loggedIn)
+    {
+        username = "Guest";
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    <link href="/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/Content/css/ace.min.css" rel="stylesheet" />
+    <link href="/Content/css/ace-rtl.min.css" rel="stylesheet" />
+    <link href="/Content/css/ace-skins.min.css" rel="stylesheet" />
+    <link href="/Content/css/ace-fonts.css" rel="stylesheet" />
+    <link href="/Content/css/datepicker.css" rel="stylesheet" />
+    <link href="/Content/admincustom.css" rel="stylesheet" />
+    <link href="/Content/css/fuelux.min.css" rel="stylesheet" />
+
+    @RenderSection("head", required: false)
+    @Scripts.Render("~/Scripts/Common")
+    @RenderSection("scripts", required: false)
+</head>
+<body>
+    <div class="navbar navbar-default" id="navbar">
+        <script type="text/javascript">
+            try { ace.settings.check('navbar', 'fixed') } catch (e) { }
+        </script>
+
+        <div class="navbar-container" id="navbar-container">
+            <div class="navbar-header pull-left">
+                <a href="#" class="navbar-brand">
+                    <small>
+                        <i class="icon-money icon-large"></i>
+                        Service CMS
+                    </small>
+                </a>
+            </div>
+            <div class="navbar-header pull-right" role="navigation">
+                <ul class="nav ace-nav">
+                    <li class="light-blue">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                            <span class="user-info">
+                                <small>Welcome,</small>
+                                @username
+                            </span>
+                            <i class="icon-caret-down"></i>
+                        </a>
+                        <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                            @if (loggedIn)
+                            {
+                                <li>
+                                    <a href="@Url.Action("LogOut", "Home")">
+                                        Log Out
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a href="@Url.Action("LogIn", "Home")">
+                                        Log In
+                                    </a>
+                                </li>
+                            }
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="main-container-inner">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+            </div>
+            <ul class="nav nav-list">
+                <li>
+                    <a href="@Url.Action("Index", "Account")">
+                        <i class="icon-list"></i>
+                        <span class="menu-text">
+                            Account
+                        </span>
+                        <b class=""></b>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Hobby")">
+                        <i class="icon-list"></i>
+                        <span class="menu-text">
+                            Hobby
+                        </span>
+                        <b class=""></b>
+                    </a>
+                </li>
+            </ul>
+            <!-- /.nav-list -->
+            <div class="sidebar-collapse" id="sidebar-collapse">
+                <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+            </div>
+
+        </div>
+
+        <div class="main-content">
+            <div class="main-container-inner">
+                @RenderSection("breadcrumb", required: false)
+
+                <div class="page-content">
+                    @RenderBody()
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+
+</body>
+
+</html>

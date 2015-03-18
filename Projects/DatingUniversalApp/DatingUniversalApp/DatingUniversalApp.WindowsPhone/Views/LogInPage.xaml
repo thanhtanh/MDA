@@ -1,0 +1,74 @@
+﻿<Page
+    x:Class="DatingUniversalApp.Views.LogInPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DatingUniversalApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="{StaticResource AppName}" Style="{StaticResource TitleTextBlockStyle}"/>
+        </StackPanel>
+        
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom">
+                <TextBox x:Name="txtUsername" PlaceholderText="Tên đăng nhập" Margin="12,0,12,12" PreventKeyboardDisplayOnProgrammaticFocus="True"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Top">
+                <PasswordBox x:Name="txtPassword" PlaceholderText="Mật khẩu" Margin="12" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Grid.Column="0" VerticalAlignment="Top">
+                <Button x:Name="btnLogIn" Content="Đăng nhập" HorizontalAlignment="Stretch" Click="btnLogIn_Click" Margin="12,0" />
+                <ProgressBar x:Name="pgbSignIn" IsIndeterminate="False" Visibility="Collapsed" />
+                <TextBlock x:Name="lblStatus" Text="Ready" Style="{StaticResource MessageDialogContentStyle}" HorizontalAlignment="Center" Margin="0,12" Foreground="Red" Visibility="Collapsed" />
+
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}">Đăng nhập bằng mạng xã hội</TextBlock>
+
+                <Grid Margin="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <Button Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Facebook</Button>
+                    <Button Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Twitter</Button>
+                    <Button Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Google+</Button>
+                </Grid>
+                
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom">
+                <Button x:Name="btnRegister" Content="Đăng ký tài khoản" HorizontalAlignment="Stretch" Margin="12,0" Click="btnRegister_Click" />
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Top">
+                <Button x:Name="btnForgetPassword" Content="Quên mật khẩu" HorizontalAlignment="Stretch" Margin="12,0" Click="btnForgetPassword_Click" />
+            </StackPanel>
+
+        </Grid>
+
+    </Grid>
+</Page>

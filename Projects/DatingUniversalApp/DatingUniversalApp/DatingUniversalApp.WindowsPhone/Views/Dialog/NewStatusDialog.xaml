@@ -1,0 +1,24 @@
+﻿<ContentDialog
+    x:Class="DatingUniversalApp.Views.Dialog.NewStatusDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DatingUniversalApp.Views.Dialog"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="CẬP NHẬT TRẠNG THÁI"
+    PrimaryButtonText="đăng"  
+    SecondaryButtonText="hủy">
+
+    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <TextBlock Name="body" Style="{StaticResource MessageDialogContentStyle}" TextWrapping="Wrap">
+            <TextBlock.Text>
+                Chia sẻ cho bạn bè những thông tin mới nhất về mình:
+            </TextBlock.Text>
+        </TextBlock>
+        
+        <TextBox x:Name="txtContent" AcceptsReturn="True" PlaceholderText="Bạn muốn chia sẻ gì?" TextWrapping="Wrap" />
+        <CheckBox x:Name="chkShareLocation" Content="Chia sẻ vị trí hiện tại" HorizontalAlignment="Stretch" VerticalAlignment="Top" IsChecked="True"></CheckBox>
+        
+    </StackPanel>
+</ContentDialog>

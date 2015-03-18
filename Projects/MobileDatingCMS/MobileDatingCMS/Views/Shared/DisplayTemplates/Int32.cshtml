@@ -1,0 +1,10 @@
+﻿@model Int32
+
+<div class="form-group">
+    <label class="@HtmlExtensions.HtmlLabelClass" for="@this.Html.IdForModel()">
+        @this.Html.DisplayNameForModel()
+    </label>
+    <div class="@HtmlExtensions.HtmlControlDivClass">
+        <p class="form-control-static">@this.Model</p>
+    </div>
+</div>

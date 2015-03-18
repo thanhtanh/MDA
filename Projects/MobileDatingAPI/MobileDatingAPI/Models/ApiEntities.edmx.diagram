@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6b95a02383e9436f9f75051bc5012498" Name="Diagram1">
+        <EntityTypeShape EntityType="MobileDatingAPI.Models.AspNetRole" Width="1.5" PointX="0.75" PointY="21.5" />
+        <EntityTypeShape EntityType="MobileDatingAPI.Models.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="47.75" />
+        <EntityTypeShape EntityType="MobileDatingAPI.Models.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="13.5" />
+        <EntityTypeShape EntityType="MobileDatingAPI.Models.AspNetUser" Width="1.5" PointX="3" PointY="18.875" />
+        <EntityTypeShape EntityType="MobileDatingAPI.Models.FriendList" Width="1.5" PointX="5.25" PointY="32.125" />
+        <EntityTypeShape EntityType="MobileDatingAPI.Models.FriendListRequest" Width="1.5" PointX="5.25" PointY="22.625" />
+        <EntityTypeShape EntityType="MobileDatingAPI.Models.Gender" Width="1.5" PointX="6" PointY="4.125" />
+        <EntityTypeShape EntityType="MobileDatingAPI.Models.Hobby" Width="1.5" PointX="6" PointY="26" />
+        <EntityTypeShape EntityType="MobileDatingAPI.Models.InterestedIn" Width="1.5" PointX="6" PointY="50.75" />
+        <EntityTypeShape EntityType="MobileDatingAPI.Models.Location" Width="1.5" PointX="3" PointY="15.125" />
+        <EntityTypeShape EntityType="MobileDatingAPI.Models.LogInToken" Width="1.5" PointX="5.25" PointY="10.5" />
+        <EntityTypeShape EntityType="MobileDatingAPI.Models.NotificationCategory" Width="1.5" PointX="6" PointY="7.5" />
+        <EntityTypeShape EntityType="MobileDatingAPI.Models.RelationshipStatu" Width="1.5" PointX="6" PointY="53.25" />
+        <EntityTypeShape EntityType="MobileDatingAPI.Models.ReligiousView" Width="1.5" PointX="6" PointY="35.625" />
+        <EntityTypeShape EntityType="MobileDatingAPI.Models.UserHobbyMapping" Width="1.5" PointX="8.25" PointY="17.25" />
+        <EntityTypeShape EntityType="MobileDatingAPI.Models.UserLocationHistory" Width="1.5" PointX="5.25" PointY="19" />
+        <EntityTypeShape EntityType="MobileDatingAPI.Models.UserMatching" Width="1.5" PointX="5.25" PointY="44" />
+        <EntityTypeShape EntityType="MobileDatingAPI.Models.UserNotification" Width="1.5" PointX="8.25" PointY="20.875" />
+        <EntityTypeShape EntityType="MobileDatingAPI.Models.UserPhoto" Width="1.5" PointX="5.25" PointY="16" />
+        <EntityTypeShape EntityType="MobileDatingAPI.Models.UserProfile" Width="1.5" PointX="8.25" PointY="25" />
+        <EntityTypeShape EntityType="MobileDatingAPI.Models.UserStatus" Width="1.5" PointX="5.25" PointY="40.75" />
+        <AssociationConnector Association="MobileDatingAPI.Models.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="MobileDatingAPI.Models.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="MobileDatingAPI.Models.FK_FriendList_FriendUser" />
+        <AssociationConnector Association="MobileDatingAPI.Models.FK_FriendList_MainUser" />
+        <AssociationConnector Association="MobileDatingAPI.Models.FK_FriendListRequest_MainUser" />
+        <AssociationConnector Association="MobileDatingAPI.Models.FK_FriendListRequest_TargetUser" />
+        <AssociationConnector Association="MobileDatingAPI.Models.FK_LogInToken_AspNetUsers" />
+        <AssociationConnector Association="MobileDatingAPI.Models.FK_UserHobbyMapping_AspNetUsers" />
+        <AssociationConnector Association="MobileDatingAPI.Models.FK_UserLocationHistory_AspNetUsers" />
+        <AssociationConnector Association="MobileDatingAPI.Models.FK_UserMatching_MainUser" />
+        <AssociationConnector Association="MobileDatingAPI.Models.FK_UserMatching_TargetUser" />
+        <AssociationConnector Association="MobileDatingAPI.Models.FK_UserNotification_AspNetUsers" />
+        <AssociationConnector Association="MobileDatingAPI.Models.FK_UserPhoto_AspNetUsers" />
+        <AssociationConnector Association="MobileDatingAPI.Models.FK_UserProfile_AspNetUsers" />
+        <AssociationConnector Association="MobileDatingAPI.Models.FK_UserStatus_AspNetUsers" />
+        <AssociationConnector Association="MobileDatingAPI.Models.FK_UserProfile_Gender" />
+        <AssociationConnector Association="MobileDatingAPI.Models.FK_Hobby_Hobby_ParentHobby" />
+        <AssociationConnector Association="MobileDatingAPI.Models.FK_UserHobbyMapping_Hobby" />
+        <AssociationConnector Association="MobileDatingAPI.Models.FK_UserProfile_InterestedIn" />
+        <AssociationConnector Association="MobileDatingAPI.Models.FK_Location_Location" />
+        <AssociationConnector Association="MobileDatingAPI.Models.FK_UserLocationHistory_Location" />
+        <AssociationConnector Association="MobileDatingAPI.Models.FK_UserNotification_NotificationCategory" />
+        <AssociationConnector Association="MobileDatingAPI.Models.FK_UserProfile_RelationshipStatus" />
+        <AssociationConnector Association="MobileDatingAPI.Models.FK_UserProfile_ReligiousView" />
+        <AssociationConnector Association="MobileDatingAPI.Models.AspNetUserRoles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

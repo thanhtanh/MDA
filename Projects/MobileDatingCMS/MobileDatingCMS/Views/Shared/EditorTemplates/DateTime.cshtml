@@ -1,0 +1,35 @@
+﻿@model DateTime?
+
+
+@if (Model.HasValue && Model != null)
+{
+    <div class="input-group date col-md-8" style="padding: 0px">
+
+
+        @Html.TextBox("", String.Format("{0:dd-MM-yyyy}", Model.Value), new { @class = "form-control datepicker " })
+        <span class="input-group-addon">
+            <i class="icon-calendar bigger-110"></i>
+        </span>
+    </div>
+}
+else
+{
+    <div class="input-group  date col-md-8" style="padding: 0px">
+
+        @Html.TextBox("", String.Format("{0:dd-MM-yyyy}", "01-01-1970"), new { @class = "form-control datepicker" })
+        <span class="input-group-addon">
+            <i class="icon-calendar bigger-110"></i>
+        </span>
+    </div>
+}
+
+@{
+    string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+    string id = name.Replace(".", "_");
+}
+<script type="text/javascript">
+
+    $("#@id").parent().datepicker({
+        format: "dd-mm-yyyy"
+    });
+</script>

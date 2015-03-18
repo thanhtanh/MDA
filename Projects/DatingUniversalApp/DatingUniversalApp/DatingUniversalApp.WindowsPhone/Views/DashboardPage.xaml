@@ -1,0 +1,64 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DatingUniversalApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
+    x:Class="DatingUniversalApp.Views.DashboardPage"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="{StaticResource AppName}" Style="{StaticResource TitleTextBlockStyle}"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <ListView x:Name="lstStatus">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,0,0,12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="64"  />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Image Grid.Column="0" Source="ms-appx:///Assets/Logo.png" Margin="12"></Image>
+
+                            <StackPanel Orientation="Vertical" Grid.Column="1">
+                                <TextBlock Text="{Binding Path='Fullname'}" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}"></TextBlock>
+                                <TextBlock Text="{Binding Path='FormattedCreationTime'}" TextWrapping="WrapWholeWords"></TextBlock>
+
+                                <TextBlock Text="{Binding Path='Text'}" Style="{StaticResource ListViewItemContentTextBlockStyle}" TextWrapping="WrapWholeWords"></TextBlock>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
+    </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.PrimaryCommands>
+                <AppBarButton x:Name="btnAddStatus" Label="cập nhật" Icon="Add" Click="btnAddStatus_Click" />
+                <AppBarButton x:Name="btnFriendList" Label="bạn bè" Icon="Contact2" Click="btnFriendList_Click" />
+                <AppBarButton x:Name="btnMessages" Label="tin nhắn" Icon="Message" />
+            </CommandBar.PrimaryCommands>
+            <CommandBar.SecondaryCommands>
+
+                <AppBarButton x:Name="btnProfile" Label="Trang cá nhân" Click="btnProfile_Click"/>
+                <AppBarButton x:Name="btnLogOut" Label="Đăng xuất"/>
+
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

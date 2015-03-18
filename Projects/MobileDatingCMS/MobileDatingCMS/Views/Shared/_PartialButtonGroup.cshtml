@@ -1,0 +1,31 @@
+﻿@model string
+
+<div class="clearfix form-actions">
+    <div class="col-md-offset-3 col-md-9">
+        <button class="btn btn-info btnSave" type="submit">
+            <i class="icon-ok bigger-110"></i>
+            @Resources.Admin_Save
+        </button>
+
+        <input class="btn btn-success" type="submit" name="save-continue" value="@Resources.Admin_SaveContinue">
+
+        &nbsp; &nbsp; &nbsp;
+
+        <button class="btn" type="reset">
+            <i class="icon-undo bigger-110"></i>
+            @Resources.Admin_Reset
+        </button>
+
+        &nbsp; &nbsp; &nbsp;
+
+        <a href="@Model.ToString()" class="btn btn-warning">
+            @Resources.Admin_Back
+        </a>
+    </div>
+</div>
+
+<script>
+    $(".btnSave").on("click", function () {
+        sessionStorage.clear();
+    })
+</script>

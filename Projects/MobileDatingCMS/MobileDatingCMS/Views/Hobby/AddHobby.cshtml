@@ -1,0 +1,32 @@
+﻿@model HobbyViewModels
+
+@{
+    ViewBag.Title = "AddHobby";
+}
+
+<div class="page-header">
+    <h1>Add Hobby</h1>
+</div>
+
+<div>
+    @if (this.Model != null && !string.IsNullOrEmpty(this.Model.ErrorMessage))
+    {
+        <div class="text-danger">
+            @this.Model.ErrorMessage
+        </div>
+    }
+
+    <form action="@Url.Action("AddHobby")" method="post" class="form-horizontal">
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" name="@Html.NameFor(q => q.ID)" value="0" />
+        <input type="hidden" name="@Html.NameFor(q => q.Active)" value="true" />
+
+        @Html.EditorFor(q => q.Name)
+        @Html.EditorFor(q => q.Description)
+
+        <div class="form-group text-center">
+            <button class="btn btn-primary">Add Hobby</button>
+        </div>
+    </form>
+</div>

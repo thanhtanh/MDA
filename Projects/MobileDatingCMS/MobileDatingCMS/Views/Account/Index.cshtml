@@ -1,0 +1,76 @@
+﻿@model List<AccountViewModels>
+
+@{
+    ViewBag.Title = "Account Manager";
+}
+
+<div class="page-header">
+    <h1>Account Manager</h1>
+</div>
+
+
+<div>
+    <p>
+        <a class="btn btn-default" href="@Url.Action("AddAccount")">
+            <span class="glyphicon glyphicon-plus"></span>
+            Add Account
+        </a>
+    </p>
+
+</div>
+
+<table id="tbl-accounts" class="table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Active</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var account in this.Model)
+        {
+            <tr>
+                <td>@account.Username</td>
+                <td>@account.FullName</td>
+                <td>@account.Email</td>
+                <td>
+                    @account.Active
+                    (
+                    <a href="@this.Url.Action("ToggleBlocking", new { id = account.ID, })">Toggle</a>
+                    )
+                </td>
+                <td>
+                    <a class="text-info" href="@Url.Action("EditAccount", new { id = account.ID, })">
+                        Edit
+                    </a>
+                    |
+                    <a class="text-danger" href="javascript:onDeleteLinkClick('@account.ID');">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<form id="frm-hidden-delete" method="post" action="@Url.Action("DeleteAccount")">
+
+    <input type="hidden" id="id" name="id" value="" />
+
+</form>
+
+<script>
+    $("#tbl-accounts").dataTable();
+
+    function onDeleteLinkClick(id) {
+        if (confirm("Are you sure to delete this account? This cannot be undone!")) {
+            $("#frm-hidden-delete #id").val(id);
+            $("#frm-hidden-delete").submit();
+        }
+    };
+
+</script>

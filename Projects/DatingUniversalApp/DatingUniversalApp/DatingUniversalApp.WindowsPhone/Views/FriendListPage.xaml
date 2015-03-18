@@ -1,0 +1,67 @@
+﻿<Page xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps" 
+    x:Class="DatingUniversalApp.Views.FriendListPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DatingUniversalApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="{StaticResource AppName}" Style="{StaticResource TitleTextBlockStyle}"/>
+            <TextBlock Text="Danh sách bạn" Style="{StaticResource HeaderTextBlockStyle}" />
+        </StackPanel>
+
+        <Maps:MapControl x:Name="map" Grid.Row="1" />
+
+        <ListView x:Name="lstFriends" Grid.Row="2" HorizontalContentAlignment="Stretch" >
+
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="64" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.Column="0" Source="ms-appx:///Assets/Logo.png" Margin="5" VerticalAlignment="Top"></Image>
+
+                        <StackPanel Orientation="Vertical" Grid.Column="1" Margin="5">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="{Binding Fullname}" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}"></TextBlock>
+
+                                <Image Grid.Column="1" Source="{Binding OnlineIcon}" Width="16" Height="16" HorizontalAlignment="Right" Visibility="{Binding OnlineVisibility}" />
+                                <TextBlock Grid.Column="1" Text="{Binding FormattedLastOnlineTime}" HorizontalAlignment="Right" Visibility="{Binding OfflineTimeVisibility}" />
+                            </Grid>
+
+                            <TextBlock Text="{Binding Path='Subtitle'}" Style="{StaticResource ListViewItemContentTextBlockStyle}" TextWrapping="WrapWholeWords"></TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+
+</Page>

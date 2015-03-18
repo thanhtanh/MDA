@@ -1,0 +1,4 @@
+﻿@model string
+
+
+@Html.CheckBox("", @Model.ToString().ToLower().Equals("true")?true:false)

@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Hobby";
+}
+
+<link rel="stylesheet" type="text/css" href="~/Content/plugin/jstree/css/style.min.css" />
+<script src="~/Content/plugin/jstree/js/jstree.min.js"></script>
+
+
+<div class="page-header">
+    <h1>Hobby</h1>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <a href="@Url.Action("AddHobby")" class="btn btn-default">Add a Main Hobby</a>
+        <button id="btn-add-hobby" class="btn btn-default" disabled>Add a Sub-Hobby to Main Hobby</button>
+    </div>
+</div>
+
+<p></p>
+
+<div id="tree-hobbies"></div>
+
+
+<script>
+    $("#tree-hobbies")
+        .on("changed.jstree", function (e, data) {
+            console.log(e);
+            console.log(data);
+
+            var btn = $("#btn-add-hobby");
+            if (data.selected.length) {
+                btn.removeAttr("disabled");
+                btn.html("Add a Sub-Hobby to " + data);
+            } else {
+                btn.attr("disabled", "");
+            }
+        })
+        .jstree({
+            "core": {
+                "data": {
+                    "url": "@Url.Action("List")",
+                    "data": function (node) {
+                        return { "id": node.id };
+                    }
+                }
+            }
+        });
+</script>

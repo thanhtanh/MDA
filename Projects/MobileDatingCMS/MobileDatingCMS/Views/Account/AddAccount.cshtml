@@ -1,0 +1,33 @@
+﻿@model AccountViewModels
+
+@{
+    ViewBag.Title = "Add Account";
+}
+
+<h2>Add Account</h2>
+
+<form class="form-horizontal" method="post" action="@this.Url.Action("AddAccount")">
+
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" name="@Html.NameFor(q => q.ID)" value="0" />
+    <input type="hidden" name="@Html.NameFor(q => q.Active)" value="true" />
+
+    @if (this.Model != null && !string.IsNullOrEmpty(this.Model.ErrorMessage))
+    {
+        <div class="form-group text-danger">
+            @this.Model.ErrorMessage
+        </div>
+    }
+
+    @Html.EditorFor(q => q.Username)
+    @Html.EditorFor(q => q.Password)
+
+    @Html.EditorFor(q => q.FullName)
+    @Html.EditorFor(q => q.Email)
+
+    <div class="form-group text-center">
+        <button class="btn btn-primary">Add</button>
+    </div>
+
+</form>

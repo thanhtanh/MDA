@@ -1,0 +1,11 @@
+﻿@model Int32
+
+<div class="form-group">
+    <label class="@HtmlExtensions.HtmlLabelClass" for="@this.Html.IdForModel()">
+        @this.Html.DisplayNameForModel()
+    </label>
+    <div class="@HtmlExtensions.HtmlControlDivClass">
+        <input type="number" id="@this.Html.IdForModel()" name="@this.Html.NameForModel()" value="@this.Html.ValueForModel()"
+               placeholder="@this.Html.DisplayNameForModel()" class="@HtmlExtensions.HtmlControlClass" />
+    </div>
+</div>

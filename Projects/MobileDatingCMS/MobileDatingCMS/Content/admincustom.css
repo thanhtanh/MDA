@@ -1,0 +1,33 @@
+﻿
+
+.elfinder-toolbar {
+    height: 35px;
+}
+
+.elfinder .elfinder-navbar {
+    height: 100%;
+}
+
+.elfinder .elfinder-button {
+    width: 24px !important;
+    height: 24px !important;
+}
+.elfinder
+{
+    height: 500px !important;
+}
+.nav-list > li > a {
+    font-family: arial, verdana, helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.nav-list > li .submenu > li > a {
+    font-family: arial, verdana, helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.nav-list a.dropdown-toggle .badge, .nav-list a.dropdown-toggle .label {
+    right: 5px;
+}

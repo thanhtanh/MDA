@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="08b6d34a715242cf906530d4e825228a" Name="Diagram1">
+        <EntityTypeShape EntityType="MobileDatingCMS.Models.AspNetRole" Width="1.5" PointX="0.75" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDatingCMS.Models.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDatingCMS.Models.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDatingCMS.Models.AspNetUser" Width="1.5" PointX="3" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDatingCMS.Models.ChatConversation" Width="1.5" PointX="5.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDatingCMS.Models.ChatItem" Width="1.5" PointX="7.5" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDatingCMS.Models.FriendList" Width="1.5" PointX="5.25" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDatingCMS.Models.FriendListRequest" Width="1.5" PointX="5.25" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDatingCMS.Models.Gender" Width="1.5" PointX="9" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDatingCMS.Models.InterestedIn" Width="1.5" PointX="9" PointY="27.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDatingCMS.Models.Location" Width="1.5" PointX="6" PointY="35.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDatingCMS.Models.NotificationCategory" Width="1.5" PointX="8" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDatingCMS.Models.RelationshipStatu" Width="1.5" PointX="9" PointY="30" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDatingCMS.Models.ReligiousView" Width="1.5" PointX="9" PointY="32.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDatingCMS.Models.UserHobbyMapping" Width="1.5" PointX="8.25" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDatingCMS.Models.UserLocationHistory" Width="1.5" PointX="8.25" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDatingCMS.Models.UserMatching" Width="1.5" PointX="5.25" PointY="31.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDatingCMS.Models.UserNotification" Width="1.5" PointX="10.25" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDatingCMS.Models.UserPhoto" Width="1.5" PointX="5.25" PointY="38.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDatingCMS.Models.UserProfile" Width="1.5" PointX="11.25" PointY="19.375" IsExpanded="true" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_ChatConversation_MainUser" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_ChatConversation_TargetUser" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_FriendList_FriendUser" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_FriendList_MainUser" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_FriendListRequest_MainUser" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_FriendListRequest_TargetUser" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_UserHobbyMapping_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_UserLocationHistory_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_UserMatching_MainUser" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_UserMatching_TargetUser" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_UserNotification_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_UserPhoto_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_UserProfile_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_ChatItem_ChatConversation" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_UserProfile_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_UserProfile_InterestedIn" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_Location_Location" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_UserLocationHistory_Location" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_UserNotification_NotificationCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_UserProfile_RelationshipStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_UserProfile_ReligiousView" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDatingCMS.Models.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MobileDatingCMS.Models.Hobby" Width="1.5" PointX="0.75" PointY="1" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_Hobby_Hobby_ParentHobby" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_UserHobbyMapping_Hobby" />
+        <EntityTypeShape EntityType="MobileDatingCMS.Models.LogInToken" Width="1.5" PointX="5.25" PointY="25.375" />
+        <EntityTypeShape EntityType="MobileDatingCMS.Models.UserStatus" Width="1.5" PointX="5.25" PointY="28.25" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_LogInToken_AspNetUsers" />
+        <AssociationConnector Association="MobileDatingCMS.Models.FK_UserStatus_AspNetUsers" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

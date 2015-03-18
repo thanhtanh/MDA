@@ -1,0 +1,24 @@
+﻿@{
+    var template = Convert.ToString(ViewData["ControlType"]);
+
+    if (template == "TextArea")
+    {
+        template = "Ckeditor";
+    }
+    else if (template == "Image")
+    {
+        template = "GetImageFromElfinder";
+    }
+    else if (template == "Text")
+    {
+        template = "String";
+    }
+    else if (template.ToLower().Equals("checkbox"))
+    {
+        template = "CheckBox";
+    }
+}
+
+
+@Html.EditorFor(model => model, template)
+

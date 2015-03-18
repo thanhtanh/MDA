@@ -1,0 +1,1824 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MobileDatingCMS.Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ChatConversation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="TargetUserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChatItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConversationID" Type="int" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ContentTypeID" Type="int" Nullable="false" />
+          <Property Name="CreationTime" Type="datetime" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FriendList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="FriendUserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Since" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FriendListRequest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="TargetUserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CreationTime" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hobby">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentHobbyID" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Icon" Type="nvarchar(max)" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InterestedIn">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ParentLocationID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LogInToken">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Token" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ExpirationTime" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NotificationCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RelationshipStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReligiousView">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserHobbyMapping">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="HobbyID" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserLocationHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="GpsLongitude" Type="float" Nullable="false" />
+          <Property Name="GpsLatitude" Type="float" Nullable="false" />
+          <Property Name="LocationID" Type="int" />
+          <Property Name="AccessTime" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserMatching">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="TargetUserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Rank" Type="int" />
+          <Property Name="Feedback" Type="nvarchar(max)" />
+          <Property Name="Matched" Type="bit" />
+          <Property Name="Accepted" Type="bit" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserNotification">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Url" Type="nvarchar(max)" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="Read" Type="bit" Nullable="false" />
+          <Property Name="CreationTime" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserPhoto">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="FullPath" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Position" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Birthday" Type="date" />
+          <Property Name="MobilePhone" Type="varchar" MaxLength="20" />
+          <Property Name="GenderID" Type="int" />
+          <Property Name="InterestedInID" Type="int" />
+          <Property Name="ReligiousViewID" Type="int" />
+          <Property Name="RelationshipID" Type="int" />
+          <Property Name="About" Type="nvarchar(max)" />
+          <Property Name="School" Type="nvarchar(max)" />
+          <Property Name="Graduated" Type="bit" />
+          <Property Name="Work" Type="nvarchar(max)" />
+          <Property Name="WorkPlace" Type="nvarchar(max)" />
+          <Property Name="ShareLocation" Type="bit" />
+          <Property Name="Subtitle" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="UserStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreationTime" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ChatConversation_MainUser">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="ChatConversation" Type="Self.ChatConversation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChatConversation">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChatConversation_TargetUser">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="ChatConversation" Type="Self.ChatConversation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChatConversation">
+              <PropertyRef Name="TargetUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChatItem_ChatConversation">
+          <End Role="ChatConversation" Type="Self.ChatConversation" Multiplicity="1" />
+          <End Role="ChatItem" Type="Self.ChatItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChatConversation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChatItem">
+              <PropertyRef Name="ConversationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FriendList_FriendUser">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="FriendList" Type="Self.FriendList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FriendList">
+              <PropertyRef Name="FriendUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FriendList_MainUser">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="FriendList" Type="Self.FriendList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FriendList">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FriendListRequest_MainUser">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="FriendListRequest" Type="Self.FriendListRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FriendListRequest">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FriendListRequest_TargetUser">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="FriendListRequest" Type="Self.FriendListRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FriendListRequest">
+              <PropertyRef Name="TargetUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hobby_Hobby_ParentHobby">
+          <End Role="Hobby" Type="Self.Hobby" Multiplicity="0..1" />
+          <End Role="Hobby1" Type="Self.Hobby" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hobby">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Hobby1">
+              <PropertyRef Name="ParentHobbyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Location_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Location1" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Location1">
+              <PropertyRef Name="ParentLocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogInToken_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="LogInToken" Type="Self.LogInToken" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LogInToken">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserHobbyMapping_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="UserHobbyMapping" Type="Self.UserHobbyMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserHobbyMapping">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserHobbyMapping_Hobby">
+          <End Role="Hobby" Type="Self.Hobby" Multiplicity="1" />
+          <End Role="UserHobbyMapping" Type="Self.UserHobbyMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hobby">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserHobbyMapping">
+              <PropertyRef Name="HobbyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLocationHistory_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="UserLocationHistory" Type="Self.UserLocationHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserLocationHistory">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLocationHistory_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="UserLocationHistory" Type="Self.UserLocationHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserLocationHistory">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMatching_MainUser">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="UserMatching" Type="Self.UserMatching" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMatching">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMatching_TargetUser">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="UserMatching" Type="Self.UserMatching" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMatching">
+              <PropertyRef Name="TargetUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserNotification_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="UserNotification" Type="Self.UserNotification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserNotification">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserNotification_NotificationCategory">
+          <End Role="NotificationCategory" Type="Self.NotificationCategory" Multiplicity="1" />
+          <End Role="UserNotification" Type="Self.UserNotification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserNotification">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPhoto_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="UserPhoto" Type="Self.UserPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPhoto">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_InterestedIn">
+          <End Role="InterestedIn" Type="Self.InterestedIn" Multiplicity="0..1" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InterestedIn">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="InterestedInID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_RelationshipStatus">
+          <End Role="RelationshipStatus" Type="Self.RelationshipStatus" Multiplicity="0..1" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RelationshipStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="RelationshipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_ReligiousView">
+          <End Role="ReligiousView" Type="Self.ReligiousView" Multiplicity="0..1" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReligiousView">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="ReligiousViewID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserStatus_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="UserStatus" Type="Self.UserStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserStatus">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MobileDatingCMSModelsStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChatConversation" EntityType="Self.ChatConversation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChatItem" EntityType="Self.ChatItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FriendList" EntityType="Self.FriendList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FriendListRequest" EntityType="Self.FriendListRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hobby" EntityType="Self.Hobby" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InterestedIn" EntityType="Self.InterestedIn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogInToken" EntityType="Self.LogInToken" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NotificationCategory" EntityType="Self.NotificationCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RelationshipStatus" EntityType="Self.RelationshipStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReligiousView" EntityType="Self.ReligiousView" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserHobbyMapping" EntityType="Self.UserHobbyMapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLocationHistory" EntityType="Self.UserLocationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserMatching" EntityType="Self.UserMatching" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserNotification" EntityType="Self.UserNotification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserPhoto" EntityType="Self.UserPhoto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserStatus" EntityType="Self.UserStatus" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ChatConversation_MainUser" Association="Self.FK_ChatConversation_MainUser">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="ChatConversation" EntitySet="ChatConversation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatConversation_TargetUser" Association="Self.FK_ChatConversation_TargetUser">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="ChatConversation" EntitySet="ChatConversation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatItem_ChatConversation" Association="Self.FK_ChatItem_ChatConversation">
+            <End Role="ChatConversation" EntitySet="ChatConversation" />
+            <End Role="ChatItem" EntitySet="ChatItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FriendList_FriendUser" Association="Self.FK_FriendList_FriendUser">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FriendList" EntitySet="FriendList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FriendList_MainUser" Association="Self.FK_FriendList_MainUser">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FriendList" EntitySet="FriendList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FriendListRequest_MainUser" Association="Self.FK_FriendListRequest_MainUser">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FriendListRequest" EntitySet="FriendListRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FriendListRequest_TargetUser" Association="Self.FK_FriendListRequest_TargetUser">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FriendListRequest" EntitySet="FriendListRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hobby_Hobby_ParentHobby" Association="Self.FK_Hobby_Hobby_ParentHobby">
+            <End Role="Hobby" EntitySet="Hobby" />
+            <End Role="Hobby1" EntitySet="Hobby" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Location_Location" Association="Self.FK_Location_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Location1" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogInToken_AspNetUsers" Association="Self.FK_LogInToken_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="LogInToken" EntitySet="LogInToken" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserHobbyMapping_AspNetUsers" Association="Self.FK_UserHobbyMapping_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="UserHobbyMapping" EntitySet="UserHobbyMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserHobbyMapping_Hobby" Association="Self.FK_UserHobbyMapping_Hobby">
+            <End Role="Hobby" EntitySet="Hobby" />
+            <End Role="UserHobbyMapping" EntitySet="UserHobbyMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLocationHistory_AspNetUsers" Association="Self.FK_UserLocationHistory_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="UserLocationHistory" EntitySet="UserLocationHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLocationHistory_Location" Association="Self.FK_UserLocationHistory_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="UserLocationHistory" EntitySet="UserLocationHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMatching_MainUser" Association="Self.FK_UserMatching_MainUser">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="UserMatching" EntitySet="UserMatching" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMatching_TargetUser" Association="Self.FK_UserMatching_TargetUser">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="UserMatching" EntitySet="UserMatching" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserNotification_AspNetUsers" Association="Self.FK_UserNotification_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="UserNotification" EntitySet="UserNotification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserNotification_NotificationCategory" Association="Self.FK_UserNotification_NotificationCategory">
+            <End Role="NotificationCategory" EntitySet="NotificationCategory" />
+            <End Role="UserNotification" EntitySet="UserNotification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPhoto_AspNetUsers" Association="Self.FK_UserPhoto_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="UserPhoto" EntitySet="UserPhoto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_AspNetUsers" Association="Self.FK_UserProfile_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="UserProfile" EntitySet="UserProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Gender" Association="Self.FK_UserProfile_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="UserProfile" EntitySet="UserProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_InterestedIn" Association="Self.FK_UserProfile_InterestedIn">
+            <End Role="InterestedIn" EntitySet="InterestedIn" />
+            <End Role="UserProfile" EntitySet="UserProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_RelationshipStatus" Association="Self.FK_UserProfile_RelationshipStatus">
+            <End Role="RelationshipStatus" EntitySet="RelationshipStatus" />
+            <End Role="UserProfile" EntitySet="UserProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_ReligiousView" Association="Self.FK_UserProfile_ReligiousView">
+            <End Role="ReligiousView" EntitySet="ReligiousView" />
+            <End Role="UserProfile" EntitySet="UserProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserStatus_AspNetUsers" Association="Self.FK_UserStatus_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="UserStatus" EntitySet="UserStatus" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MobileDatingCMS.Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="ChatConversations" Relationship="Self.FK_ChatConversation_MainUser" FromRole="AspNetUsers" ToRole="ChatConversation" />
+          <NavigationProperty Name="ChatConversations1" Relationship="Self.FK_ChatConversation_TargetUser" FromRole="AspNetUsers" ToRole="ChatConversation" />
+          <NavigationProperty Name="FriendLists" Relationship="Self.FK_FriendList_FriendUser" FromRole="AspNetUsers" ToRole="FriendList" />
+          <NavigationProperty Name="FriendLists1" Relationship="Self.FK_FriendList_MainUser" FromRole="AspNetUsers" ToRole="FriendList" />
+          <NavigationProperty Name="FriendListRequests" Relationship="Self.FK_FriendListRequest_MainUser" FromRole="AspNetUsers" ToRole="FriendListRequest" />
+          <NavigationProperty Name="FriendListRequests1" Relationship="Self.FK_FriendListRequest_TargetUser" FromRole="AspNetUsers" ToRole="FriendListRequest" />
+          <NavigationProperty Name="UserHobbyMappings" Relationship="Self.FK_UserHobbyMapping_AspNetUsers" FromRole="AspNetUsers" ToRole="UserHobbyMapping" />
+          <NavigationProperty Name="UserLocationHistories" Relationship="Self.FK_UserLocationHistory_AspNetUsers" FromRole="AspNetUsers" ToRole="UserLocationHistory" />
+          <NavigationProperty Name="UserMatchings" Relationship="Self.FK_UserMatching_MainUser" FromRole="AspNetUsers" ToRole="UserMatching" />
+          <NavigationProperty Name="UserMatchings1" Relationship="Self.FK_UserMatching_TargetUser" FromRole="AspNetUsers" ToRole="UserMatching" />
+          <NavigationProperty Name="UserNotifications" Relationship="Self.FK_UserNotification_AspNetUsers" FromRole="AspNetUsers" ToRole="UserNotification" />
+          <NavigationProperty Name="UserPhotoes" Relationship="Self.FK_UserPhoto_AspNetUsers" FromRole="AspNetUsers" ToRole="UserPhoto" />
+          <NavigationProperty Name="UserProfile" Relationship="Self.FK_UserProfile_AspNetUsers" FromRole="AspNetUsers" ToRole="UserProfile" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LogInTokens" Relationship="MobileDatingCMS.Models.FK_LogInToken_AspNetUsers" FromRole="AspNetUser" ToRole="LogInToken" />
+          <NavigationProperty Name="UserStatus" Relationship="MobileDatingCMS.Models.FK_UserStatus_AspNetUsers" FromRole="AspNetUser" ToRole="UserStatu" />
+        </EntityType>
+        <EntityType Name="ChatConversation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TargetUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_ChatConversation_MainUser" FromRole="ChatConversation" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUser1" Relationship="Self.FK_ChatConversation_TargetUser" FromRole="ChatConversation" ToRole="AspNetUsers" />
+          <NavigationProperty Name="ChatItems" Relationship="Self.FK_ChatItem_ChatConversation" FromRole="ChatConversation" ToRole="ChatItem" />
+        </EntityType>
+        <EntityType Name="ChatItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConversationID" Type="Int32" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContentTypeID" Type="Int32" Nullable="false" />
+          <Property Name="CreationTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ChatConversation" Relationship="Self.FK_ChatItem_ChatConversation" FromRole="ChatItem" ToRole="ChatConversation" />
+        </EntityType>
+        <EntityType Name="FriendList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FriendUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Since" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_FriendList_FriendUser" FromRole="FriendList" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUser1" Relationship="Self.FK_FriendList_MainUser" FromRole="FriendList" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="FriendListRequest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TargetUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreationTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_FriendListRequest_MainUser" FromRole="FriendListRequest" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUser1" Relationship="Self.FK_FriendListRequest_TargetUser" FromRole="FriendListRequest" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="UserProfiles" Relationship="Self.FK_UserProfile_Gender" FromRole="Gender" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="InterestedIn">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="UserProfiles" Relationship="Self.FK_UserProfile_InterestedIn" FromRole="InterestedIn" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ParentLocationID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Location1" Relationship="Self.FK_Location_Location" FromRole="Location" ToRole="Location1" />
+          <NavigationProperty Name="Location2" Relationship="Self.FK_Location_Location" FromRole="Location1" ToRole="Location" />
+          <NavigationProperty Name="UserLocationHistories" Relationship="Self.FK_UserLocationHistory_Location" FromRole="Location" ToRole="UserLocationHistory" />
+        </EntityType>
+        <EntityType Name="NotificationCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="UserNotifications" Relationship="Self.FK_UserNotification_NotificationCategory" FromRole="NotificationCategory" ToRole="UserNotification" />
+        </EntityType>
+        <EntityType Name="RelationshipStatu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="UserProfiles" Relationship="Self.FK_UserProfile_RelationshipStatus" FromRole="RelationshipStatus" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="ReligiousView">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="UserProfiles" Relationship="Self.FK_UserProfile_ReligiousView" FromRole="ReligiousView" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="UserHobbyMapping">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HobbyID" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_UserHobbyMapping_AspNetUsers" FromRole="UserHobbyMapping" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Hobby" Relationship="MobileDatingCMS.Models.FK_UserHobbyMapping_Hobby" FromRole="UserHobbyMapping" ToRole="Hobby" />
+        </EntityType>
+        <EntityType Name="UserLocationHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GpsLongitude" Type="Double" Nullable="false" />
+          <Property Name="GpsLatitude" Type="Double" Nullable="false" />
+          <Property Name="LocationID" Type="Int32" />
+          <Property Name="AccessTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_UserLocationHistory_AspNetUsers" FromRole="UserLocationHistory" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_UserLocationHistory_Location" FromRole="UserLocationHistory" ToRole="Location" />
+        </EntityType>
+        <EntityType Name="UserMatching">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TargetUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Rank" Type="Int32" />
+          <Property Name="Feedback" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Matched" Type="Boolean" />
+          <Property Name="Accepted" Type="Boolean" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_UserMatching_MainUser" FromRole="UserMatching" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUser1" Relationship="Self.FK_UserMatching_TargetUser" FromRole="UserMatching" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="UserNotification">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Read" Type="Boolean" Nullable="false" />
+          <Property Name="CreationTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_UserNotification_AspNetUsers" FromRole="UserNotification" ToRole="AspNetUsers" />
+          <NavigationProperty Name="NotificationCategory" Relationship="Self.FK_UserNotification_NotificationCategory" FromRole="UserNotification" ToRole="NotificationCategory" />
+        </EntityType>
+        <EntityType Name="UserPhoto">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FullPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Position" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_UserPhoto_AspNetUsers" FromRole="UserPhoto" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Birthday" Type="DateTime" Precision="0" />
+          <Property Name="MobilePhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GenderID" Type="Int32" />
+          <Property Name="InterestedInID" Type="Int32" />
+          <Property Name="ReligiousViewID" Type="Int32" />
+          <Property Name="RelationshipID" Type="Int32" />
+          <Property Name="About" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="School" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Graduated" Type="Boolean" />
+          <Property Name="Work" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WorkPlace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_UserProfile_AspNetUsers" FromRole="UserProfile" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_UserProfile_Gender" FromRole="UserProfile" ToRole="Gender" />
+          <NavigationProperty Name="InterestedIn" Relationship="Self.FK_UserProfile_InterestedIn" FromRole="UserProfile" ToRole="InterestedIn" />
+          <NavigationProperty Name="RelationshipStatu" Relationship="Self.FK_UserProfile_RelationshipStatus" FromRole="UserProfile" ToRole="RelationshipStatus" />
+          <NavigationProperty Name="ReligiousView" Relationship="Self.FK_UserProfile_ReligiousView" FromRole="UserProfile" ToRole="ReligiousView" />
+          <Property Name="ShareLocation" Type="Boolean" />
+          <Property Name="Subtitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChatConversation_MainUser">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="ChatConversation" Type="Self.ChatConversation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChatConversation">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChatConversation_TargetUser">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="ChatConversation" Type="Self.ChatConversation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChatConversation">
+              <PropertyRef Name="TargetUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FriendList_FriendUser">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="FriendList" Type="Self.FriendList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FriendList">
+              <PropertyRef Name="FriendUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FriendList_MainUser">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="FriendList" Type="Self.FriendList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FriendList">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FriendListRequest_MainUser">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="FriendListRequest" Type="Self.FriendListRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FriendListRequest">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FriendListRequest_TargetUser">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="FriendListRequest" Type="Self.FriendListRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FriendListRequest">
+              <PropertyRef Name="TargetUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserHobbyMapping_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="UserHobbyMapping" Type="Self.UserHobbyMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserHobbyMapping">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLocationHistory_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="UserLocationHistory" Type="Self.UserLocationHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserLocationHistory">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMatching_MainUser">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="UserMatching" Type="Self.UserMatching" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMatching">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMatching_TargetUser">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="UserMatching" Type="Self.UserMatching" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMatching">
+              <PropertyRef Name="TargetUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserNotification_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="UserNotification" Type="Self.UserNotification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserNotification">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPhoto_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="UserPhoto" Type="Self.UserPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPhoto">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChatItem_ChatConversation">
+          <End Role="ChatConversation" Type="Self.ChatConversation" Multiplicity="1" />
+          <End Role="ChatItem" Type="Self.ChatItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChatConversation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChatItem">
+              <PropertyRef Name="ConversationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_InterestedIn">
+          <End Role="InterestedIn" Type="Self.InterestedIn" Multiplicity="0..1" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InterestedIn">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="InterestedInID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Location_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Location1" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Location1">
+              <PropertyRef Name="ParentLocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLocationHistory_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="UserLocationHistory" Type="Self.UserLocationHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserLocationHistory">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserNotification_NotificationCategory">
+          <End Role="NotificationCategory" Type="Self.NotificationCategory" Multiplicity="1" />
+          <End Role="UserNotification" Type="Self.UserNotification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserNotification">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_RelationshipStatus">
+          <End Role="RelationshipStatus" Type="Self.RelationshipStatu" Multiplicity="0..1" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RelationshipStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="RelationshipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_ReligiousView">
+          <End Role="ReligiousView" Type="Self.ReligiousView" Multiplicity="0..1" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReligiousView">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="ReligiousViewID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="CmsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="ChatConversations" EntityType="Self.ChatConversation" />
+          <EntitySet Name="ChatItems" EntityType="Self.ChatItem" />
+          <EntitySet Name="FriendLists" EntityType="Self.FriendList" />
+          <EntitySet Name="FriendListRequests" EntityType="Self.FriendListRequest" />
+          <EntitySet Name="Genders" EntityType="Self.Gender" />
+          <EntitySet Name="InterestedIns" EntityType="Self.InterestedIn" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="NotificationCategories" EntityType="Self.NotificationCategory" />
+          <EntitySet Name="RelationshipStatus" EntityType="Self.RelationshipStatu" />
+          <EntitySet Name="ReligiousViews" EntityType="Self.ReligiousView" />
+          <EntitySet Name="UserHobbyMappings" EntityType="Self.UserHobbyMapping" />
+          <EntitySet Name="UserLocationHistories" EntityType="Self.UserLocationHistory" />
+          <EntitySet Name="UserMatchings" EntityType="Self.UserMatching" />
+          <EntitySet Name="UserNotifications" EntityType="Self.UserNotification" />
+          <EntitySet Name="UserPhotoes" EntityType="Self.UserPhoto" />
+          <EntitySet Name="UserProfiles" EntityType="Self.UserProfile" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatConversation_MainUser" Association="Self.FK_ChatConversation_MainUser">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="ChatConversation" EntitySet="ChatConversations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatConversation_TargetUser" Association="Self.FK_ChatConversation_TargetUser">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="ChatConversation" EntitySet="ChatConversations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FriendList_FriendUser" Association="Self.FK_FriendList_FriendUser">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FriendList" EntitySet="FriendLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FriendList_MainUser" Association="Self.FK_FriendList_MainUser">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FriendList" EntitySet="FriendLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FriendListRequest_MainUser" Association="Self.FK_FriendListRequest_MainUser">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FriendListRequest" EntitySet="FriendListRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FriendListRequest_TargetUser" Association="Self.FK_FriendListRequest_TargetUser">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FriendListRequest" EntitySet="FriendListRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserHobbyMapping_AspNetUsers" Association="Self.FK_UserHobbyMapping_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="UserHobbyMapping" EntitySet="UserHobbyMappings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLocationHistory_AspNetUsers" Association="Self.FK_UserLocationHistory_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="UserLocationHistory" EntitySet="UserLocationHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMatching_MainUser" Association="Self.FK_UserMatching_MainUser">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="UserMatching" EntitySet="UserMatchings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMatching_TargetUser" Association="Self.FK_UserMatching_TargetUser">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="UserMatching" EntitySet="UserMatchings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserNotification_AspNetUsers" Association="Self.FK_UserNotification_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="UserNotification" EntitySet="UserNotifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPhoto_AspNetUsers" Association="Self.FK_UserPhoto_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="UserPhoto" EntitySet="UserPhotoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_AspNetUsers" Association="Self.FK_UserProfile_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatItem_ChatConversation" Association="Self.FK_ChatItem_ChatConversation">
+            <End Role="ChatConversation" EntitySet="ChatConversations" />
+            <End Role="ChatItem" EntitySet="ChatItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Gender" Association="Self.FK_UserProfile_Gender">
+            <End Role="Gender" EntitySet="Genders" />
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_InterestedIn" Association="Self.FK_UserProfile_InterestedIn">
+            <End Role="InterestedIn" EntitySet="InterestedIns" />
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Location_Location" Association="Self.FK_Location_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Location1" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLocationHistory_Location" Association="Self.FK_UserLocationHistory_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="UserLocationHistory" EntitySet="UserLocationHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserNotification_NotificationCategory" Association="Self.FK_UserNotification_NotificationCategory">
+            <End Role="NotificationCategory" EntitySet="NotificationCategories" />
+            <End Role="UserNotification" EntitySet="UserNotifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_RelationshipStatus" Association="Self.FK_UserProfile_RelationshipStatus">
+            <End Role="RelationshipStatus" EntitySet="RelationshipStatus" />
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_ReligiousView" Association="Self.FK_UserProfile_ReligiousView">
+            <End Role="ReligiousView" EntitySet="ReligiousViews" />
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="Hobbies" EntityType="MobileDatingCMS.Models.Hobby" />
+          <AssociationSet Name="FK_Hobby_Hobby_ParentHobby" Association="MobileDatingCMS.Models.FK_Hobby_Hobby_ParentHobby">
+            <End Role="Hobby" EntitySet="Hobbies" />
+            <End Role="Hobby1" EntitySet="Hobbies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserHobbyMapping_Hobby" Association="MobileDatingCMS.Models.FK_UserHobbyMapping_Hobby">
+            <End Role="Hobby" EntitySet="Hobbies" />
+            <End Role="UserHobbyMapping" EntitySet="UserHobbyMappings" />
+          </AssociationSet>
+          <EntitySet Name="LogInTokens" EntityType="MobileDatingCMS.Models.LogInToken" />
+          <EntitySet Name="UserStatuses" EntityType="MobileDatingCMS.Models.UserStatus" />
+          <AssociationSet Name="FK_LogInToken_AspNetUsers" Association="MobileDatingCMS.Models.FK_LogInToken_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="LogInToken" EntitySet="LogInTokens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserStatus_AspNetUsers" Association="MobileDatingCMS.Models.FK_UserStatus_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="UserStatu" EntitySet="UserStatuses" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Hobby">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentHobbyID" Type="Int32" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Icon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SubHobbies" Relationship="MobileDatingCMS.Models.FK_Hobby_Hobby_ParentHobby" FromRole="Hobby" ToRole="Hobby1" />
+          <NavigationProperty Name="ParentHobby" Relationship="MobileDatingCMS.Models.FK_Hobby_Hobby_ParentHobby" FromRole="Hobby1" ToRole="Hobby" />
+          <NavigationProperty Name="UserHobbyMappings" Relationship="MobileDatingCMS.Models.FK_UserHobbyMapping_Hobby" FromRole="Hobby" ToRole="UserHobbyMapping" />
+        </EntityType>
+        <Association Name="FK_Hobby_Hobby_ParentHobby">
+          <End Type="MobileDatingCMS.Models.Hobby" Role="Hobby" Multiplicity="0..1" />
+          <End Type="MobileDatingCMS.Models.Hobby" Role="Hobby1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hobby">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Hobby1">
+              <PropertyRef Name="ParentHobbyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserHobbyMapping_Hobby">
+          <End Type="MobileDatingCMS.Models.Hobby" Role="Hobby" Multiplicity="1" />
+          <End Type="MobileDatingCMS.Models.UserHobbyMapping" Role="UserHobbyMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hobby">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserHobbyMapping">
+              <PropertyRef Name="HobbyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LogInToken">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Token" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ExpirationTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="MobileDatingCMS.Models.FK_LogInToken_AspNetUsers" FromRole="LogInToken" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="UserStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreationTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="MobileDatingCMS.Models.FK_UserStatus_AspNetUsers" FromRole="UserStatu" ToRole="AspNetUser" />
+        </EntityType>
+        <Association Name="FK_LogInToken_AspNetUsers">
+          <End Type="MobileDatingCMS.Models.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="MobileDatingCMS.Models.LogInToken" Role="LogInToken" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LogInToken">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserStatus_AspNetUsers">
+          <End Type="MobileDatingCMS.Models.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="MobileDatingCMS.Models.UserStatus" Role="UserStatu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserStatu">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MobileDatingCMSModelsStoreContainer" CdmEntityContainer="CmsEntities">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="MobileDatingCMS.Models.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="MobileDatingCMS.Models.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="MobileDatingCMS.Models.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="MobileDatingCMS.Models.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChatConversations">
+            <EntityTypeMapping TypeName="MobileDatingCMS.Models.ChatConversation">
+              <MappingFragment StoreEntitySet="ChatConversation">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="TargetUserID" ColumnName="TargetUserID" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChatItems">
+            <EntityTypeMapping TypeName="MobileDatingCMS.Models.ChatItem">
+              <MappingFragment StoreEntitySet="ChatItem">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ConversationID" ColumnName="ConversationID" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="ContentTypeID" ColumnName="ContentTypeID" />
+                <ScalarProperty Name="CreationTime" ColumnName="CreationTime" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FriendLists">
+            <EntityTypeMapping TypeName="MobileDatingCMS.Models.FriendList">
+              <MappingFragment StoreEntitySet="FriendList">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FriendUserID" ColumnName="FriendUserID" />
+                <ScalarProperty Name="Since" ColumnName="Since" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FriendListRequests">
+            <EntityTypeMapping TypeName="MobileDatingCMS.Models.FriendListRequest">
+              <MappingFragment StoreEntitySet="FriendListRequest">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="TargetUserID" ColumnName="TargetUserID" />
+                <ScalarProperty Name="CreationTime" ColumnName="CreationTime" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="MobileDatingCMS.Models.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InterestedIns">
+            <EntityTypeMapping TypeName="MobileDatingCMS.Models.InterestedIn">
+              <MappingFragment StoreEntitySet="InterestedIn">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="MobileDatingCMS.Models.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ParentLocationID" ColumnName="ParentLocationID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NotificationCategories">
+            <EntityTypeMapping TypeName="MobileDatingCMS.Models.NotificationCategory">
+              <MappingFragment StoreEntitySet="NotificationCategory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RelationshipStatus">
+            <EntityTypeMapping TypeName="MobileDatingCMS.Models.RelationshipStatu">
+              <MappingFragment StoreEntitySet="RelationshipStatus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReligiousViews">
+            <EntityTypeMapping TypeName="MobileDatingCMS.Models.ReligiousView">
+              <MappingFragment StoreEntitySet="ReligiousView">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserHobbyMappings">
+            <EntityTypeMapping TypeName="MobileDatingCMS.Models.UserHobbyMapping">
+              <MappingFragment StoreEntitySet="UserHobbyMapping">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="HobbyID" ColumnName="HobbyID" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLocationHistories">
+            <EntityTypeMapping TypeName="MobileDatingCMS.Models.UserLocationHistory">
+              <MappingFragment StoreEntitySet="UserLocationHistory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="GpsLongitude" ColumnName="GpsLongitude" />
+                <ScalarProperty Name="GpsLatitude" ColumnName="GpsLatitude" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="AccessTime" ColumnName="AccessTime" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMatchings">
+            <EntityTypeMapping TypeName="MobileDatingCMS.Models.UserMatching">
+              <MappingFragment StoreEntitySet="UserMatching">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="TargetUserID" ColumnName="TargetUserID" />
+                <ScalarProperty Name="Rank" ColumnName="Rank" />
+                <ScalarProperty Name="Feedback" ColumnName="Feedback" />
+                <ScalarProperty Name="Matched" ColumnName="Matched" />
+                <ScalarProperty Name="Accepted" ColumnName="Accepted" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserNotifications">
+            <EntityTypeMapping TypeName="MobileDatingCMS.Models.UserNotification">
+              <MappingFragment StoreEntitySet="UserNotification">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Read" ColumnName="Read" />
+                <ScalarProperty Name="CreationTime" ColumnName="CreationTime" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPhotoes">
+            <EntityTypeMapping TypeName="MobileDatingCMS.Models.UserPhoto">
+              <MappingFragment StoreEntitySet="UserPhoto">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FullPath" ColumnName="FullPath" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfiles">
+            <EntityTypeMapping TypeName="MobileDatingCMS.Models.UserProfile">
+              <MappingFragment StoreEntitySet="UserProfile">
+                <ScalarProperty Name="Subtitle" ColumnName="Subtitle" />
+                <ScalarProperty Name="ShareLocation" ColumnName="ShareLocation" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+                <ScalarProperty Name="InterestedInID" ColumnName="InterestedInID" />
+                <ScalarProperty Name="ReligiousViewID" ColumnName="ReligiousViewID" />
+                <ScalarProperty Name="RelationshipID" ColumnName="RelationshipID" />
+                <ScalarProperty Name="About" ColumnName="About" />
+                <ScalarProperty Name="School" ColumnName="School" />
+                <ScalarProperty Name="Graduated" ColumnName="Graduated" />
+                <ScalarProperty Name="Work" ColumnName="Work" />
+                <ScalarProperty Name="WorkPlace" ColumnName="WorkPlace" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="MobileDatingCMS.Models.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Hobbies">
+            <EntityTypeMapping TypeName="MobileDatingCMS.Models.Hobby">
+              <MappingFragment StoreEntitySet="Hobby">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ParentHobbyID" ColumnName="ParentHobbyID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogInTokens">
+            <EntityTypeMapping TypeName="MobileDatingCMS.Models.LogInToken">
+              <MappingFragment StoreEntitySet="LogInToken">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ExpirationTime" ColumnName="ExpirationTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserStatuses">
+            <EntityTypeMapping TypeName="MobileDatingCMS.Models.UserStatus">
+              <MappingFragment StoreEntitySet="UserStatus">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="CreationTime" ColumnName="CreationTime" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
